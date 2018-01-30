@@ -1,0 +1,22 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: green;
+}
+
+body * {
+  text-align: center;
+}
+
+form {
+  background-color: yellow;
+  text-align: center;
+}
+
+/* Need to max out width so can text-align */
+table {
+  width: 100%;
+}
