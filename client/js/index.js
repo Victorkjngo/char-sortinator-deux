@@ -5,7 +5,7 @@ $(document).ready(function () {
 
   const renderRow = (a, b) => {
     console.log('A', a, 'B', b);
-    const $tr = $('<td />');
+    const $tr = $('<tr />');
     const $td1 = $('<td>' + a + '</td>');
     const $td2 = $('<td>' + b + '</td>');
     
@@ -15,19 +15,21 @@ $(document).ready(function () {
 
   $form.on('submit', function (e) {
     let val = $input.val();
+    console.log('TYPEOF input', typeof $input.val(), 'val is', val);
+    if (!val) {
+      val = '';
+    }
+    
     let data = {
       string: val
     };
 
-    console.log('Submitting:', val);
-
     $.ajax('reverseString', {
-      data: JSON.stringify(data), // if it's stringified JSON, it'll get into request body for some reason!
+      data: JSON.stringify(data), 
       method: 'POST',
       contentType: 'application/json',
       success: function (result) {
         console.log('SUCCESS', result);
-        // render on page
         renderRow(val, result);
       },
       error: function (err) {
